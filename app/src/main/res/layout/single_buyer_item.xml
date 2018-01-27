@@ -6,9 +6,10 @@
 
     <ImageView
         android:id="@+id/vendorImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="7dp"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="7dp"
+        android:src="@drawable/ic_launcher_background"/>
 
     <TextView
         android:id="@+id/vendorName"
@@ -16,13 +17,30 @@
         android:layout_height="wrap_content"
         android:text="Vendor Name"
         android:textSize="25sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary"
+        android:layout_toRightOf="@+id/vendorImage"
+        android:layout_margin="5dp"
+        android:layout_marginRight="7dp"/>
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/vendorName"
+        android:text="BOOK"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="3dp"
+        />
 
     <TextView
         android:id="@+id/vendorDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan rhoncus finibus. Proin a nisi eget erat maximus fermentum eu sed eros. Curabitur eu purus accumsan, porta nulla id, vulputate dolor."
+        android:layout_below="@+id/vendorName"
+        android:layout_toRightOf="@id/vendorImage"
+
         />
 
 </RelativeLayout>
