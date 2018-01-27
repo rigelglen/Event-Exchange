@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:layout_height="wrap_content"
+<RelativeLayout android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/vendorImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="7dp"
-        android:src="@drawable/ic_launcher_background"/>
+        tools:src="@drawable/ic_launcher_background"/>
 
     <TextView
         android:id="@+id/vendorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vendor Name"
+        tools:text="Vendor Name"
         android:textSize="25sp"
         android:textColor="@color/colorPrimary"
         android:layout_toEndOf="@+id/vendorImage"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="7dp"/>
 
     <Button
@@ -37,10 +38,9 @@
         android:id="@+id/vendorDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan rhoncus finibus. Proin a nisi eget erat maximus fermentum eu sed eros. Curabitur eu purus accumsan, porta nulla id, vulputate dolor."
-        android:layout_below="@+id/vendorName"
-        android:layout_toEndOf="@id/vendorImage"
-
-        />
+        android:layout_alignStart="@+id/vendorName"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        tools:text="Decorations" />
 
 </RelativeLayout>
