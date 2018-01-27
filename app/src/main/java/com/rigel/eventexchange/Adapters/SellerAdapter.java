@@ -1,6 +1,7 @@
 package com.rigel.eventexchange.Adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder>{
-    ArrayList<SellerModel> sellerList;
+    private ArrayList<SellerModel> sellerList;
     public SellerAdapter(ArrayList<SellerModel> sellerList){
         this.sellerList = sellerList;
     }
@@ -24,12 +25,20 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.single_buyer_item, parent, false);
+
+        return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        SellerModel model = sellerList.get(position);
 
+        holder.vendorName.setText(model.getSellerName());
+        holder.vendorDescription.setText(model.getSpecialization());
+        holder.vendorImage.setImageResource(model.getSellerImage());
     }
 
     @Override
@@ -37,16 +46,18 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
         return sellerList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+     class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView sellerName;
-        TextView specialization;
-        ImageView sellerImage;
+        TextView vendorName;
+        TextView vendorDescription;
+        ImageView vendorImage;
 
-        public ViewHolder(View itemView) {
+         ViewHolder(View itemView) {
             super(itemView);
 
-            sellerName = itemView.findViewById(R.id.)
+            vendorName = itemView.findViewById(R.id.vendorName);
+            vendorDescription = itemView.findViewById(R.id.vendorDescription);
+            vendorImage = itemView.findViewById(R.id.vendorImage);
 
         }
     }
