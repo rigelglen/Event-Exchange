@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rigel.eventexchange.Activities.MainActivity">
-
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:text="Hello world"/>
+    tools:context="com.rigel.eventexchange.Activities.SellerPage">
 
 </android.support.constraint.ConstraintLayout>

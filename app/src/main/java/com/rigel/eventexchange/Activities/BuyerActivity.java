@@ -1,4 +1,4 @@
-package com.rigel.eventexchange;
+package com.rigel.eventexchange.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rigel.eventexchange.Adapters.SellerAdapter;
 import com.rigel.eventexchange.Models.SellerModel;
+import com.rigel.eventexchange.R;
 
 import java.util.ArrayList;
 
