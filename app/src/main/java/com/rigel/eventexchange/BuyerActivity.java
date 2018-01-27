@@ -22,12 +22,12 @@ public class BuyerActivity extends AppCompatActivity {
 
         ArrayList<SellerModel> sellers = new ArrayList<SellerModel>();
 
-        sellers.add(new SellerModel("Seller1", "Cakes"));
-        sellers.add(new SellerModel("Seller2", "Decoration"));
-        sellers.add(new SellerModel("Seller3", "Food"));
-        sellers.add(new SellerModel("Seller4", "Cakes"));
-        sellers.add(new SellerModel("Seller5", "Decoration"));
-        sellers.add(new SellerModel("Seller6", "Food"));
+        sellers.add(new SellerModel("Seller1", "Cakes", R.drawable.ic_launcher_foreground));
+        sellers.add(new SellerModel("Seller2", "Decoration", R.drawable.ic_launcher_foreground));
+        sellers.add(new SellerModel("Seller3", "Food", R.drawable.ic_launcher_foreground));
+        sellers.add(new SellerModel("Seller4", "Cakes", R.drawable.ic_launcher_foreground));
+        sellers.add(new SellerModel("Seller5", "Decoration", R.drawable.ic_launcher_foreground));
+        sellers.add(new SellerModel("Seller6", "Food", R.drawable.ic_launcher_foreground));
 
 
 

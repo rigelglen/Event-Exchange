@@ -9,6 +9,12 @@ public class SellerModel {
     String specialization;
     int sellerImage;
 
+    public SellerModel(String sellerName, String specialization, int sellerImage) {
+        this.sellerName = sellerName;
+        this.specialization = specialization;
+        this.sellerImage = sellerImage;
+    }
+
     public String getSellerName() {
         return sellerName;
     }
