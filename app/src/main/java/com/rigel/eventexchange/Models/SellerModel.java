@@ -2,12 +2,15 @@ package com.rigel.eventexchange.Models;
 
 /**
  * Created by Rigel on 27-01-2018.
+ *
+ * For Seller List
+ *
  */
 
 public class SellerModel {
-    String sellerName;
-    String specialization;
-    int sellerImage;
+    private String sellerName;
+    private String specialization;
+    private int sellerImage;
 
     public SellerModel(String sellerName, String specialization, int sellerImage) {
         this.sellerName = sellerName;

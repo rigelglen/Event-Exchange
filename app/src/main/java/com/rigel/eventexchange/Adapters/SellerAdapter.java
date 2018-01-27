@@ -14,6 +14,9 @@ import java.util.ArrayList;
 
 /**
  * Created by Rigel on 27-01-2018.
+ *
+ * For Seller List
+ *
  */
 
 public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder>{
