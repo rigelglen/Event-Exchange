@@ -3,6 +3,7 @@ package com.rigel.eventexchange;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -35,9 +36,14 @@ public class BuyerActivity extends AppCompatActivity {
 
         sellerRecycler.setAdapter(adapter);
 
-        RecyclerView.LayoutManager lm = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         sellerRecycler.setLayoutManager(lm);
         sellerRecycler.setItemAnimator(new DefaultItemAnimator());
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(sellerRecycler.getContext(),
+                LinearLayoutManager.VERTICAL);
+        sellerRecycler.addItemDecoration(dividerItemDecoration);
+
 
 
 

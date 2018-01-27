@@ -18,18 +18,18 @@
         android:text="Vendor Name"
         android:textSize="25sp"
         android:textColor="@color/colorPrimary"
-        android:layout_toRightOf="@+id/vendorImage"
+        android:layout_toEndOf="@+id/vendorImage"
         android:layout_margin="5dp"
-        android:layout_marginRight="7dp"/>
+        android:layout_marginEnd="7dp"/>
 
     <Button
         android:id="@+id/bookButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/vendorName"
+        android:layout_alignParentEnd="true"
         android:text="BOOK"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginBottom="3dp"
         />
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan rhoncus finibus. Proin a nisi eget erat maximus fermentum eu sed eros. Curabitur eu purus accumsan, porta nulla id, vulputate dolor."
         android:layout_below="@+id/vendorName"
-        android:layout_toRightOf="@id/vendorImage"
+        android:layout_toEndOf="@id/vendorImage"
 
         />
 
