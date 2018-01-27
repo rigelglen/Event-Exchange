@@ -3,8 +3,11 @@ package com.rigel.eventexchange.Adapters;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.rigel.eventexchange.Models.SellerModel;
+import com.rigel.eventexchange.R;
 
 import java.util.ArrayList;
 
@@ -35,8 +38,16 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
+        TextView sellerName;
+        TextView specialization;
+        ImageView sellerImage;
+
         public ViewHolder(View itemView) {
             super(itemView);
+
+            sellerName = itemView.findViewById(R.id.)
+
         }
     }
 }
