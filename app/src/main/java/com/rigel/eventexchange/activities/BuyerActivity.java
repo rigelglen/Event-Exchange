@@ -54,8 +54,6 @@ public class BuyerActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL);
         sellerRecycler.addItemDecoration(dividerItemDecoration);
 
-        getWindow().setExitTransition(null);
-
     }
 
 

@@ -16,11 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.BuyerActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/SellerListPageStyles"/>
+
         <activity android:name=".activities.SellerActivity" />
-        <activity android:name=".activities.SellerPage" android:theme="@style/AppNoTitle"></activity>
+
+        <activity android:name=".activities.SellerPage" android:theme="@style/SingleSellerPageStyles" />
     </application>
 
 </manifest>
