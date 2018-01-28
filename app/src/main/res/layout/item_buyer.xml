@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_height="wrap_content"
+<android.support.constraint.ConstraintLayout android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    >
+    android:foreground="?android:attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/vendorImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="7dp"
-        tools:src="@drawable/ic_launcher_background"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
         android:transitionName="vendorImage"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background"
+        android:contentDescription="Vendor Image"/>
 
     <TextView
         android:id="@+id/vendorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Vendor Name"
-        android:textSize="25sp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/colorPrimary"
-        android:layout_toEndOf="@+id/vendorImage"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="7dp"/>
-
-    <Button
-        android:id="@+id/bookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:text="BOOK"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="3dp"
-        />
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/vendorImage"
+        app:layout_constraintTop_toTopOf="@+id/vendorImage"
+        tools:text="Vendor Name" />
 
     <TextView
         android:id="@+id/vendorDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/vendorName"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="@+id/vendorName"
+        app:layout_constraintTop_toBottomOf="@+id/vendorName"
         tools:text="Decorations" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

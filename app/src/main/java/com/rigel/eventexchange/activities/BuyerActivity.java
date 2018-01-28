@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class BuyerActivity extends AppCompatActivity {
 
     RecyclerView sellerRecycler;
-
+    ArrayList<SellerModel> sellers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class BuyerActivity extends AppCompatActivity {
 
         sellerRecycler = findViewById(R.id.sellerList);
 
-        ArrayList<SellerModel> sellers = new ArrayList<>();
+        sellers = new ArrayList<>();
 
         sellers.add(new SellerModel("Seller1", "Cakes", R.drawable.image, 1));
         sellers.add(new SellerModel("Seller2", "Decoration", R.drawable.image, 2));
