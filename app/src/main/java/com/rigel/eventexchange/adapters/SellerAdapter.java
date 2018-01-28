@@ -1,13 +1,19 @@
-package com.rigel.eventexchange.Adapters;
+package com.rigel.eventexchange.adapters;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.rigel.eventexchange.Models.SellerModel;
+import com.rigel.eventexchange.activities.SellerPage;
+import com.rigel.eventexchange.models.SellerModel;
 import com.rigel.eventexchange.R;
 
 import java.util.ArrayList;
@@ -20,9 +26,13 @@ import java.util.ArrayList;
  */
 
 public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder>{
+
     private ArrayList<SellerModel> sellerList;
-    public SellerAdapter(ArrayList<SellerModel> sellerList){
+    private Context ctx;
+
+    public SellerAdapter(ArrayList<SellerModel> sellerList, Context ctx){
         this.sellerList = sellerList;
+        this.ctx = ctx;
     }
 
 
@@ -32,16 +42,17 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.single_buyer_item, parent, false);
 
+
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        SellerModel model = sellerList.get(position);
-
+        final SellerModel model = sellerList.get(position);
         holder.vendorName.setText(model.getSellerName());
         holder.vendorDescription.setText(model.getSpecialization());
         holder.vendorImage.setImageResource(model.getSellerImage());
+
     }
 
     @Override
@@ -55,6 +66,7 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
         TextView vendorDescription;
         ImageView vendorImage;
 
+
          ViewHolder(View itemView) {
             super(itemView);
 
@@ -62,6 +74,38 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             vendorDescription = itemView.findViewById(R.id.vendorDescription);
             vendorImage = itemView.findViewById(R.id.vendorImage);
 
+
+             itemView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(final View v) {
+
+                     v.setClickable(false);
+
+                     Intent it = new Intent(ctx, SellerPage.class);
+
+                     it.putExtra("itemSelected", sellerList.get(getAdapterPosition()));
+
+                     View sharedImage = v.findViewById(R.id.vendorImage);
+
+                     ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)ctx, sharedImage, ViewCompat.getTransitionName(sharedImage));
+
+                     ctx.startActivity(it, options.toBundle());
+
+                     // Prevent multiple clicks on the item
+
+                     new Handler().postDelayed(new Runnable() {
+
+                         @Override
+                         public void run() {
+                             v.setClickable(true);
+                         }
+                     }, 1000);
+
+                 }
+             });
+
+
         }
     }
+
 }

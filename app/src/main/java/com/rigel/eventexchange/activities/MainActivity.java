@@ -1,15 +1,15 @@
-package com.rigel.eventexchange.Activities;
+package com.rigel.eventexchange.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.rigel.eventexchange.R;
 
-public class SellerPage extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_page);
+        setContentView(R.layout.activity_main);
     }
 }

@@ -1,16 +1,15 @@
-package com.rigel.eventexchange.Activities;
+package com.rigel.eventexchange.activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.rigel.eventexchange.R;
 
-public class MainActivity extends AppCompatActivity {
+public class SellerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_seller);
     }
 }

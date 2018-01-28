@@ -9,7 +9,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="7dp"
-        tools:src="@drawable/ic_launcher_background"/>
+        tools:src="@drawable/ic_launcher_background"
+        android:transitionName="vendorImage"
+        />
 
     <TextView
         android:id="@+id/vendorName"
