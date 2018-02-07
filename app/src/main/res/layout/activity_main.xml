@@ -72,7 +72,7 @@
   <Button android:id="@+id/btn_link_login"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:text="Already a member? Click here to Login insted"
+      android:text="Already a member? Click here to Login instead"
       android:background="@android:color/transparent"
       android:layout_marginTop="10dp"
       android:textColor="@color/colorPrimaryDark"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
-    android:transitionOrdering="together">
+android:transitionOrdering="together">
 <slide xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="300"
     android:slideEdge="left"
@@ -10,12 +10,12 @@
         <target android:excludeId="@android:id/navigationBarBackground"/>
     </targets>
 </slide>
-    <fade xmlns:android="http://schemas.android.com/apk/res/android"
-        android:duration="500"
-        >
-        <targets>
-            <target android:excludeId="@android:id/statusBarBackground"/>
-            <target android:excludeId="@android:id/navigationBarBackground"/>
-        </targets>
-    </fade>
+<fade xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    >
+    <targets>
+        <target android:excludeId="@android:id/statusBarBackground"/>
+        <target android:excludeId="@android:id/navigationBarBackground"/>
+    </targets>
+</fade>
 </transitionSet>
