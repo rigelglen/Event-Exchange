@@ -130,7 +130,8 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
                     //TODO: dialogue box
                 } else {
                     String uid = currentUser.getUid();
-                    mDatabase = FirebaseDatabase.getInstance().getReference().child(uid).child("Type");
+                    mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mDatabase.child(uid).setValue(seller);
                 }
 
 
