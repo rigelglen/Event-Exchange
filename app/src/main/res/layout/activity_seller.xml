@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rigel.eventexchange.activities.SellerActivity">
+    android:orientation="vertical"
+    tools:context="com.example.hp.sellertest.MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="161dp"
+        android:layout_height="107dp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/buttonChoose"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="Choose" />
+
+    <Button
+        android:id="@+id/buttonUpload"
+        android:layout_width="156dp"
+        android:layout_height="31dp"
+        android:layout_weight="1"
+        android:elevation="0dp"
+        android:onClick="onClick"
+        android:text="Upload" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Enter Name" />
+
+    <EditText
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_weight="2"
+        android:hint="Enter Type Of Seller" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="Enter Description" />
+
+    <EditText
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="2"
+        android:hint="Enter Contact Number"
+        android:inputType="phone" />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:layout_gravity="right"
+        android:text="View Profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="18sp" />
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

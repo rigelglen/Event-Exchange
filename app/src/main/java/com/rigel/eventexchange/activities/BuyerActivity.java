@@ -1,15 +1,15 @@
 package com.rigel.eventexchange.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.rigel.eventexchange.R;
 import com.rigel.eventexchange.adapters.SellerAdapter;
 import com.rigel.eventexchange.models.SellerModel;
-import com.rigel.eventexchange.R;
 
 import java.util.ArrayList;
 

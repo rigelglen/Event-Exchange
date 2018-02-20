@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "282177040767-j2jpbpjnsndg7l2l34ttvs8qv3hf0vmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rigel.eventexchange",
+            "certificate_hash": "1ebff2cabdbcc22256f6a13738a5d58db108b3d7"
+          }
+        },
+        {
           "client_id": "282177040767-1dpvjhgue2on2slc0c6ls6agct5amh8u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
