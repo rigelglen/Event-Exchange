@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.rigel.eventexchange.activities.SellerPage;
+
 import com.rigel.eventexchange.models.SellerModel;
+import com.rigel.eventexchange.activities.SellerPage;
 import com.rigel.eventexchange.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -50,8 +52,11 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         final SellerModel model = sellerList.get(position);
         holder.vendorName.setText(model.getSellerName());
-        holder.vendorDescription.setText(model.getSpecialization());
-        holder.vendorImage.setImageResource(model.getSellerImage());
+        holder.vendorDescription.setText(model.getSellerType());
+        if(!model.getPic().isEmpty())
+            Picasso.with(ctx).load(model.getPic()).into(holder.vendorImage);
+        else
+            holder.vendorImage.setImageResource(R.drawable.image);
 
     }
 

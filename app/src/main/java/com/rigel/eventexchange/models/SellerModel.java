@@ -4,30 +4,45 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Rigel on 27-01-2018.
- *
- * For Seller List
- *
+ * Created by hp on 28-01-2018.
  */
 
 public class SellerModel implements Parcelable{
-    private String sellerName;
-    private String specialization;
-    private int sellerImage;
-    private int sellerId;
+    private String name;
+    private String sellerType;
+    private String description;
+    private String number;
+    private String pic;
+    private String Type;
 
-    public SellerModel(String sellerName, String specialization, int sellerImage, int sellerId) {
-        this.sellerName = sellerName;
-        this.specialization = specialization;
-        this.sellerImage = sellerImage;
-        this.sellerId = sellerId;
+    public String getType() {
+        return Type;
     }
 
-    private SellerModel(Parcel in) {
-        sellerName = in.readString();
-        specialization = in.readString();
-        sellerImage = in.readInt();
-        sellerId = in.readInt();
+    public void setType(String type) {
+        Type = type;
+    }
+
+    protected SellerModel(Parcel in) {
+        name = in.readString();
+        sellerType = in.readString();
+        description = in.readString();
+        number = in.readString();
+        pic = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(sellerType);
+        dest.writeString(description);
+        dest.writeString(number);
+        dest.writeString(pic);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<SellerModel> CREATOR = new Creator<SellerModel>() {
@@ -42,48 +57,79 @@ public class SellerModel implements Parcelable{
         }
     };
 
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    //    public String getType(){
+//        return "Seller";
+//    }
+
+    // Default constructor required for calls to
+    // DataSnapshot.getValue(User.class)
+
+    public SellerModel(){
+
+    }
+
+    public SellerModel(String name, String type, String description, String number) {
+        this.name = name;
+        this.sellerType = type;
+        this.description = description;
+        this.number = number;
+        this.pic = "";
+    }
+
+    public SellerModel(String name, String type, String description, String number, String pic) {
+        this.name = name;
+        this.sellerType = type;
+        this.description = description;
+        this.number = number;
+        this.pic = pic;
+    }
+
     public String getSellerName() {
-        return sellerName;
+
+        return name;
     }
 
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
+    public void setSellerName(String name) {
+
+        this.name = name;
     }
 
-    public String getSpecialization() {
-        return specialization;
+
+    public String getSellerType() {
+
+        return sellerType;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setSellerType(String type) {
+
+        this.sellerType = type;
     }
 
-    public int getSellerImage() {
-        return sellerImage;
+    public String getSellerDescription() {
+
+        return description;
     }
 
-    public void setSellerImage(int sellerImage) {
-        this.sellerImage = sellerImage;
+    public void setSellerDescription(String description) {
+
+        this.description = description;
+    }
+    public String getSellerNumber() {
+
+        return number;
     }
 
-    public int getSellerId() {
-        return sellerId;
-    }
+    public void setSellerNumber(String number) {
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(sellerName);
-        dest.writeString(specialization);
-        dest.writeInt(sellerImage);
-        dest.writeInt(sellerId);
+        this.number = number;
     }
 }
+

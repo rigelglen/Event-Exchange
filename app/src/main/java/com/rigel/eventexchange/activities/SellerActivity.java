@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -22,19 +23,24 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rigel.eventexchange.R;
+import com.rigel.eventexchange.models.SellerModel;
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 
 
 public class SellerActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int PICK_IMAGE_REQUEST = 234;
-    private Button buttonUpload;
     EditText NameEditText, TypeEditText, DescriptionEditText, NumberEditText;
     TextView textView;
     private ImageView imageView;
@@ -49,10 +55,10 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
     String NameHolder, TypeHolder, DescriptionHolder, NumberHolder;
 
     Firebase firebase;
-
+    SellerModel seller = new SellerModel();
     DatabaseReference databaseReference;
 
-//    public static final String Database_Path = "Seller_Database";
+    //    public static final String Database_Path = "Seller_Database";
     public static final String Storage_Path = "Seller_Database";
     //public static final String STORAGE_PATH_UPLOADS = "uploads/";
     public static final String DATABASE_PATH_UPLOADS = "uploads";
@@ -73,7 +79,7 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
         DescriptionEditText = (EditText) findViewById(R.id.description);
         NumberEditText = (EditText) findViewById(R.id.number);
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
-        buttonUpload = (Button) findViewById(R.id.buttonUpload);
+        //buttonUpload = (Button) findViewById(R.id.buttonUpload);
         imageView = (ImageView) findViewById(R.id.imageView);
         textView = (TextView) findViewById(R.id.textView);
 
@@ -82,15 +88,15 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
         mDatabase = FirebaseDatabase.getInstance().getReference(DATABASE_PATH_UPLOADS);
 
         buttonChoose.setOnClickListener(this);
-        buttonUpload.setOnClickListener(this);
         textView.setOnClickListener(this);
+        setUpInitial();
 
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // Declaring student class object.
-                Seller seller = new Seller();
+
 
                 // Calling function to Get data from EditText and store into string variables.
                 GetDataFromEditText();
@@ -105,7 +111,7 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
 
                 seller.setSellerNumber(NumberHolder);
 
-                String SellerRecordIDFromServer;
+                seller.setType("Seller");
 //                SellerRecordIDFromServer = databaseReference.push().getKey();
 //                databaseReference.child(SellerRecordIDFromServer).setValue(seller);
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -115,8 +121,8 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
                     String uid = currentUser.getUid();
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     mDatabase.child(uid).setValue(seller);
+                    //mDatabase.child(uid).child("Type").setValue("Seller");
                 }
-
 
                 // Passing student phone number and name into firebase object to add into database.
 //                firebase.child("Seller").setValue(seller);
@@ -126,6 +132,39 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+    }
+
+    public void setUpInitial() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            //TODO: dialogue box
+        } else {
+            String uid = currentUser.getUid();
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    SellerModel sellerData = dataSnapshot.getValue(SellerModel.class);
+                    if (sellerData.getPic() != null)
+                        Log.i("abced", "The Pic is " + sellerData.getPic());
+                    if (sellerData.getSellerName() != null)
+                        NameEditText.setText(sellerData.getSellerName());
+                    if (sellerData.getSellerType() != null)
+                        TypeEditText.setText(sellerData.getSellerType());
+                    if (sellerData.getSellerDescription() != null)
+                        DescriptionEditText.setText(sellerData.getSellerDescription());
+                    if (sellerData.getSellerNumber() != null)
+                        NumberEditText.setText(sellerData.getSellerNumber());
+                    if (sellerData.getPic() != null)
+                        Picasso.with(SellerActivity.this).load(sellerData.getPic()).into(imageView);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     public void GetDataFromEditText() {
@@ -151,6 +190,7 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
+                uploadFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -161,12 +201,11 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         if (view == buttonChoose) {
             showFileChooser();
-        } else if (view == buttonUpload) {
-            uploadFile();
         } else if (view == textView) {
             Intent i = new Intent(SellerActivity.this, SellerPage.class);
-            //TODO: change seller page.class to seller profile
+            i.putExtra("itemSelected", seller);
             startActivity(i);
+            finish();
         }
     }
 
@@ -185,19 +224,24 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading");
             progressDialog.show();
-
-            StorageReference riversRef = storageReference.child("images.pic/.jpg");
-//    StorageReference riversRef = storageReference.child(STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(filePath));
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            final String userid = currentUser.getUid();
+            final String url = "images.pic/" + userid + ".jpg";
+            StorageReference riversRef = storageReference.child(url);
+//    StorageReference riversRef = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(filePath));
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
 
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //if the upload is successfull
+                            //if the upload is successful
                             //hiding the progress dialog
                             progressDialog.dismiss();
-
-                            //and displaying a success toast
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            Log.i("a", String.valueOf(downloadUrl));
+                            DatabaseReference mDatabase1 = FirebaseDatabase.getInstance().getReference();
+                            mDatabase1.child(userid).child("pic").setValue(String.valueOf(downloadUrl));
+                            seller.setPic(String.valueOf(downloadUrl));
                             Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
                         }
 
@@ -231,7 +275,7 @@ public class SellerActivity extends AppCompatActivity implements View.OnClickLis
                     });
         }
 //if there is not any file
-        else{
+        else {
 //you can display an error toast
         }
     }

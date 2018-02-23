@@ -107,9 +107,9 @@ public class SignupActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         //create user
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener < AuthResult > () {
+                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task < AuthResult > task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
                         progressBar.setVisibility(View.GONE);
                         // If sign in fails, Log the message to the LogCat. If sign in succeeds
@@ -132,8 +132,7 @@ public class SignupActivity extends AppCompatActivity {
                                     type = seller.getText().toString();
                                 } else if (customer.isChecked()) {
                                     type = customer.getText().toString();
-                                }
-                                else {
+                                } else {
                                     //TODO: dialogue box
                                 }
                                 //                                HashMap<String, String> dataMap = new HashMap<String, String>();
@@ -160,15 +159,12 @@ public class SignupActivity extends AppCompatActivity {
                         }
 
 
-
                     }
 
                 });
 
 
     }
-
-
 
     private boolean checkEmail() {
         String email = signupInputEmail.getText().toString().trim();

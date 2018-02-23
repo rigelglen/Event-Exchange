@@ -1,23 +1,15 @@
 package com.rigel.eventexchange.activities;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.transition.Transition;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.rigel.eventexchange.models.SellerModel;
 import com.rigel.eventexchange.R;
+import com.rigel.eventexchange.models.SellerModel;
 
 public class SellerPage extends AppCompatActivity {
 
@@ -47,9 +39,8 @@ public class SellerPage extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(m.getSellerName());
 
         vendorSingleImage = findViewById(R.id.vendorSingleImage);
-        vendorSingleImage.setImageResource(m.getSellerImage());
+        vendorSingleImage.setImageResource(R.drawable.ic_launcher_background);
         vendorSingleImage.setContentDescription(m.getSellerName());
-
 
 
     }

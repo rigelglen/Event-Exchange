@@ -26,21 +26,10 @@ public class BuyerActivity extends AppCompatActivity {
 
         sellers = new ArrayList<>();
 
-        sellers.add(new SellerModel("Seller1", "Cakes", R.drawable.image, 1));
-        sellers.add(new SellerModel("Seller2", "Decoration", R.drawable.image, 2));
-        sellers.add(new SellerModel("Seller3", "Food", R.drawable.image, 3));
-        sellers.add(new SellerModel("Seller4", "Cakes", R.drawable.image, 4));
-        sellers.add(new SellerModel("Seller5", "Decoration", R.drawable.image, 5));
-        sellers.add(new SellerModel("Seller6", "Food", R.drawable.image, 6));
-        sellers.add(new SellerModel("Seller7", "Food", R.drawable.image, 7));
-        sellers.add(new SellerModel("Seller8", "Food", R.drawable.image, 8));
-        sellers.add(new SellerModel("Seller9", "Food", R.drawable.image, 9));
-        sellers.add(new SellerModel("Seller10", "Food", R.drawable.image, 10));
-        sellers.add(new SellerModel("Seller11", "Food", R.drawable.image, 11));
-        sellers.add(new SellerModel("Seller12", "Food", R.drawable.image, 12));
-        sellers.add(new SellerModel("Seller13", "Food", R.drawable.image, 13));
-        sellers.add(new SellerModel("Seller14", "Food", R.drawable.image, 14));
-        sellers.add(new SellerModel("Seller15", "Food", R.drawable.image, 15));
+        sellers.add(new SellerModel("Seller1", "Cakes", "Good cakes", "1234567890"));
+        sellers.add(new SellerModel("Seller2", "Cakes", "Good cakes", "1234567890"));
+        sellers.add(new SellerModel("Seller3", "Cakes", "Good cakes", "1234567890"));
+
 
         SellerAdapter adapter = new SellerAdapter(sellers, this);
 

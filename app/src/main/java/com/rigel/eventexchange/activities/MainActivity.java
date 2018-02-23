@@ -112,19 +112,18 @@ public class MainActivity extends AppCompatActivity {
                                 mDatabase.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        String type = dataSnapshot.getValue().toString();
-                                        if(type.equals("Customer"))
-                                        {
+                                        if(dataSnapshot.getValue()!=null) {
+                                            String type = dataSnapshot.getValue().toString();
+                                            if (type.equals("Customer")) {
 //                                        Log.i("login", task.getResult().getUser().getUid());
-                                            Intent intent = new Intent(MainActivity.this, BuyerActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                        else if(type.equals("Seller"))
-                                        {
-                                            Intent intent = new Intent(MainActivity.this, SellerActivity.class);
-                                            startActivity(intent);
-                                            finish();
+                                                Intent intent = new Intent(MainActivity.this, BuyerActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else if (type.equals("Seller")) {
+                                                Intent intent = new Intent(MainActivity.this, SellerActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
                                         }
                                     }
 
