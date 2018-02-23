@@ -9,6 +9,11 @@ public class Seller {
     private String type;
     private String description;
     private String number;
+    private String userType="Seller";
+
+    public String getType(){
+        return  userType;
+    }
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)

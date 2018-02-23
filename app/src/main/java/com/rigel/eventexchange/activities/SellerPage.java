@@ -29,8 +29,6 @@ public class SellerPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_page);
 
-
-
         Toolbar toolbar= findViewById(R.id.tool_bar);
 
         ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) toolbar.getLayoutParams();
