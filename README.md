@@ -1,3 +1,2 @@
 # Event-Exchange
-Event Management application using Firebase.
-ReadMe file changed.
+Event Management application using Firebase
